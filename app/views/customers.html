@@ -1,4 +1,4 @@
-<h2>Customers</h2>
+<h2>{{appSettings.title}}</h2>
 Filter: <input type="text" ng-model="customerFilter.name" /> <br />
 <br />
 
@@ -25,3 +25,7 @@ Filter: <input type="text" ng-model="customerFilter.name" /> <br />
 <br />
 
 <span>Total customers: {{ customers.length }}</span>
+
+<br /><br />
+
+<footer>Version: {{ appSettings.version }}</footer>
