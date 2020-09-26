@@ -1,12 +1,24 @@
 (function () {
-  const CustomersController = function ($scope, customersService, appSettings) {
+  const CustomersController = function (
+    $scope,
+    $log,
+    customersFactory,
+    appSettings
+  ) {
     $scope.SortBy = "name";
     $scope.SortBy = false;
     $scope.customers = [];
     $scope.appSettings = appSettings;
 
     function init() {
-      $scope.customers = customersService.getCustomers();
+      customersFactory.getCustomers().then(
+        function successCallback({ data }) {
+          $scope.customers = data;
+        },
+        function errorCallback(response) {
+          $log.log(response.data.error);
+        }
+      );
     }
 
     init();
@@ -16,7 +28,12 @@
     };
   };
 
-  CustomersController.$inject = ["$scope", "customersService", "appSettings"];
+  CustomersController.$inject = [
+    "$scope",
+    "$log",
+    "customersFactory",
+    "appSettings",
+  ];
 
   angular
     .module("customersApp")

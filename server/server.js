@@ -1,13 +1,8 @@
 var express = require("express"),
-  app = express();
+  path = require("path");
+app = express();
 
-//Express 3
-//app.configure(function() {
-//    app.use(express.static(__dirname, '/'));
-//});
-
-//Express 4
-app.use(express.static(__dirname + "/"));
+app.use(express.static(path.join(__dirname + "/", "..", "client", "/")));
 
 app.get("/customers/:id", function (req, res) {
   var customerId = parseInt(req.params.id);
