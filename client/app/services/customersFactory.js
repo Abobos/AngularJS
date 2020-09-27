@@ -8,6 +8,10 @@
       getCustomerDetails: function (customerId) {
         return $http.get(`/customers/${customerId}`);
       },
+
+      getOrders: function () {
+        return $http.get("/orders");
+      },
     };
   };
 
