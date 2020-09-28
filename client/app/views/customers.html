@@ -19,6 +19,9 @@ Filter: <input type="text" ng-model="customerFilter.name" /> <br />
     <td>{{ cust.orderTotal | currency: '₦' }}</td>
     <td>{{ cust.joined | date }}</td>
     <td><a href="#!/orders/{{cust.id}}">View Orders</a></td>
+    <td class="center">
+      <span ng-click="deleteCustomer(cust.id)">del</span>
+    </td>
   </tr>
 </table>
 
