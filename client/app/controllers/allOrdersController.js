@@ -22,8 +22,12 @@
         0
       );
 
-      $scope.totalType = $scope.ordersTotal > 100 ? "success" : "danger";
+      $scope.totalType =
+        $scope.ordersTotal > 100
+          ? "p-3 mb-2 bg-success text-white"
+          : "p-3 mb-2 bg-danger text-white";
     }
+
     init();
   };
   allOrdersContoller.$inject = ["$scope", "customersFactory"];

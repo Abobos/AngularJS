@@ -3,7 +3,8 @@
     $scope,
     $log,
     customersFactory,
-    appSettings
+    appSettings,
+    $window
   ) {
     $scope.SortBy = "name";
     $scope.SortBy = false;
@@ -22,9 +23,31 @@
     }
 
     init();
+
     $scope.doSort = function (propName) {
       $scope.SortBy = propName;
       $scope.reverse = !$scope.reverse;
+    };
+
+    $scope.deleteCustomer = function (customerId) {
+      customersFactory.deleteCustomer(customerId).then(
+        function successCallback({ data }) {
+          if (data.status) {
+            const customerPosition = $scope.customers.findIndex(
+              ({ id }) => customerId === id
+            );
+
+            $scope.customers.splice(customerPosition, 1);
+
+            $window.alert("delete successfully");
+          } else {
+            $window.alert("undable to delete customer");
+          }
+        },
+        function errorCallback(response) {
+          $log.log(response.data.error);
+        }
+      );
     };
   };
 
@@ -33,6 +56,7 @@
     "$log",
     "customersFactory",
     "appSettings",
+    "$window",
   ];
 
   angular
