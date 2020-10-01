@@ -1,0 +1,14 @@
+<shared-scope></shared-scope>
+
+<isolated-scope></isolated-scope>
+
+<isolated-scope-with-string
+  name="{{customer.name}}"
+></isolated-scope-with-string>
+
+<isolated-scope-with-object datasource="customer"></isolated-scope-with-object>
+
+<isolated-scope-with-event
+  datasource="customer"
+  action="changeData()"
+></isolated-scope-with-event>
