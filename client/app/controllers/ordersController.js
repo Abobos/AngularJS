@@ -6,6 +6,7 @@
     customersFactory
   ) {
     const { customerId } = $routeParams;
+
     $scope.customerDetails = null;
 
     function init() {

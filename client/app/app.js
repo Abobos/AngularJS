@@ -18,4 +18,10 @@
       })
       .otherwise({ redirectTo: "/" });
   });
+
+  app.directive("helloWorld", function () {
+    return {
+      template: "Hello World",
+    };
+  });
 })();
